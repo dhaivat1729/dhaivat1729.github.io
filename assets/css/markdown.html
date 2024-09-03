@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>al-folio</title>
+</head>
+<body>
+  <h1>al-folio</h1>
+  <p>
+    <a href="https://travis-ci.org/alshedivat/al-folio"><img src="https://travis-ci.org/alshedivat/al-folio.svg?branch=master" alt="build status"></a>
+    <a href="https://alshedivat.github.io/al-folio/"><img src="https://img.shields.io/badge/theme-demo-brightgreen.svg" alt="demo"></a>
+    <a href="https://github.com/alshedivat/al-folio/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000" alt="license"></a>
+    <a href="https://gitter.im/alshedivat/al-folio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/alshedivat/al-folio.svg" alt="gitter"></a>
+  </p>
+  <p>A simple and clean <a href="https://jekyllrb.com/">Jekyll</a> theme for academics.</p>
+  <p><a href="https://alshedivat.github.io/al-folio/"><img src="assets/img/full-screenshot.png" alt="Screenshot"></a></p>
+  <p>Originally, <strong>al-folio</strong> was based on the <a href="https://github.com/bogoli/-folio">*folio theme</a> (published by <a href="http://liabogoev.com">Lia Bogoev</a> and under the MIT license). Since then, it got a full re-write of the styles and many additional cool features. The emphasis is on whitespace, transparency, and academic usage: <a href="https://alshedivat.github.io/al-folio/">theme demo</a>.</p>
+  <h2>Getting started</h2>
+  <p>For more about how to use Jekyll, check out <a href="https://www.taniarascia.com/make-a-static-website-with-jekyll/">this tutorial</a>. Why Jekyll? Read this <a href="https://karpathy.github.io/2014/07/01/switching-to-jekyll/">blog post</a>!</p>
+  <h3>Installation</h3>
+  <p>Assuming you have <a href="https://www.ruby-lang.org/en/downloads/">Ruby</a> and <a href="https://bundler.io/">Bundler</a> installed on your system (<em>hint: for ease of managing ruby gems, consider using <a href="https://github.com/rbenv/rbenv">rbenv</a></em>), first fork the theme from <code>github.com:alshedivat/al-folio</code> to <code>github.com:&lt;your-username&gt;/&lt;your-repo-name&gt;</code> and do the following:</p>
+  <pre><code>$ git clone git@github.com:&lt;your-username&gt;/&lt;your-repo-name&gt;.git
+$ cd &lt;your-repo-name&gt;
+$ bundle install
+$ bundle exec jekyll serve
+</code></pre>
+  <p>Now, feel free to customize the theme however you like (don't forget to change the name!). After you are done, <strong>commit</strong> your final changes. Now, you can deploy your website to <a href="https://pages.github.com/">GitHub Pages</a> by running the deploy script:</p>
+  <pre><code>$ ./bin/deploy [--user]
+</code></pre>
+  <p>By default, the script uses the <code>master</code> branch for the source code and deploys the webpage to <code>gh-pages</code>. The optional flag <code>--user</code> tells it to deploy to <code>master</code> and use <code>source</code> for the source code instead. Using <code>master</code> for deployment is a convention for <a href="https://help.github.com/articles/user-organization-and-project-pages/">user and organization pages</a>.</p>
+  <p><strong>Note:</strong> when deploying your user or organization page, make sure the <code>_config.yml</code> has <code>url</code> and <code>baseurl</code> fields as follows.</p>
+  <pre><code>url: # should be empty
+baseurl:  # should be empty
+</code></pre>
+  <h3>Usage</h3>
+  <p>Note that <code>_pages/about.md</code> is built to index.html in the published site. There is therefore no need to have a separate index page for the project. If an index page does exist in the root directory then this will prevent <code>_pages/about.md</code> from being added to the built site.</p>
+  <h2>Features</h2>
+  <h4>Ergonomic Publications</h4>
+  <p>Your publications page is generated automatically from your BibTex bibliography. Simply edit <code>_bibliography/papers.bib</code>. You can also add new <code>*.bib</code> files and customize the look of your publications however you like by editing <code>_pages/publications.md</code>.</p>
+  <p>Keep meta-information about your co-authors in <code>_data/coauthors.yml</code> and Jekyll will insert links to their webpages automatically.</p>
+  <h4>Collections</h4>
+  <p>This Jekyll theme implements collections to let you break up your work into categories. The example is divided into news and projects, but easily revamp this into apps, short stories, courses, or whatever your creative work is.</p>
+  <blockquote>
+    <p>To do this, edit the collections in the <code>_config.yml</code> file, create a corresponding folder, and create a landing page for your collection, similar to <code>_pages/projects.md</code>.</p>
+  </blockquote>
+  <p>Two different layouts are included: the blog layout, for a list of detailed descriptive list of entries, and the projects layout. The projects layout overlays a descriptive hoverover on a background image. If no image is provided, the square is auto-filled with the chosen theme color. Thumbnail sizing is not necessary, as the grid crops images perfectly.</p>
+  <h4>Theming</h4>
+  <p>Six beautiful theme colors have been selected to choose from. The default is purple, but quickly change it by editing <code>$theme-color</code> variable in the <code>_sass/variables.scss</code> file (line 72). Other color variables are listed there, as well.</p>
+  <h4>Photos</h4>
+  <p>Photo formatting is made simple using rows of a 3-column system. Make photos 1/3, 2/3, or full width. Easily create beautiful grids within your blog posts and projects pages:</p>
+  <p align="center">
+    <a href="https://alshedivat.github.io/al-folio/projects/1_project/">
+      <img src="assets/img/photos-screenshot.png" width="75%">
+    </a>
+  </p>
+  <h4>Code Highlighting</h4>
+  <p>This theme implements Jekyll's built in code syntax highlighting with Pygments. Just use the liquid tags <code>{% highlight python %}</code> and <code>{% endhighlight %}</code> to delineate your code:</p>
+  <p align="center">
+    <a href="https://alshedivat.github.io/al-folio/blog/2015/code/">
+      <img src="assets/img/code-screenshot.png" width="75%">
+    </a>
+  </p>
+  <h2>Contributing</h2>
+  <p>Feel free to contribute new features and theme improvements by sending a pull request. Style improvements and bug fixes are especially welcome.</p>
+  <h2>License</h2>
+  <p>The theme is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+</body>
+</html>
