@@ -44,7 +44,7 @@
     }
     .top-bar {
       display: flex;
-      justify-content: center; /* Center the content */
+      justify-content: center;
       align-items: center;
       padding: 10px;
       background-color: #f0f0f0;
@@ -56,28 +56,38 @@
     .toggle-btn {
       cursor: pointer;
       font-size: 24px;
-      margin-left: 20px; /* Add some space between title and button */
+      margin-left: 20px;
     }
     .news-item {
-      background-color: rgba(255, 255, 255, 0.9); /* Light background for news items */
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 5px;
       padding: 10px;
       margin: 10px 0;
       transition: background-color 0.3s, color 0.3s;
+      display: flex;
+      align-items: flex-start;
+    }
+    .news-date {
+      min-width: 120px;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+    .news-content {
+      flex: 1;
     }
     body.dark-mode .news-item {
-      background-color: #000000; /* Black background for dark mode */
-      color: #ffffff; /* White text for dark mode */
+      background-color: #000000;
+      color: #ffffff;
     }
     body.dark-mode .news-date {
-      color: #ffcc00; /* Yellow color for dates in dark mode */
+      color: #ffcc00;
     }
     .keywords {
-      color: #000000; /* Black text for light mode */
+      color: #000000;
       transition: color 0.3s;
     }
     body.dark-mode .keywords {
-      color: #ffffff; /* White text for dark mode */
+      color: #ffffff;
     }
   </style>
 </head>
@@ -85,7 +95,7 @@
 <body>
   <div class="top-bar">
     <h1>Dhaivat Bhatt</h1>
-    <span id="toggleDarkModeBtn" class="toggle-btn">🌙</span> <!-- Moon icon for dark mode -->
+    <span id="toggleDarkModeBtn" class="toggle-btn">🌙</span>
   </div>
 
   <div class="page-content">
@@ -229,15 +239,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Modal HTML
-        <div id="myModal" class="modal">
-          <div class="modal-content">
-            <span id="closeModalBtn" style="cursor:pointer;">&times;</span>
-            <p>Some additional information can go here.</p>
-          </div>
-        </div>
-        <button id="openModalBtn">Open Modal</button> -->
 
       </div>
     </div>
