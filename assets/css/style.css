@@ -131,8 +131,8 @@ input, select, textarea, button { font-family: inherit; font-size: inherit; line
 
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; font-size: 14px; line-height: 1.5; color: #24292e; background-color: #fff; }
 
-a { color: #0366d6; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: #0366d6; text-decoration: none; transition: color 0.3s ease; }
+a:hover { color: #0056b3; text-decoration: underline; }
 
 b, strong { font-weight: 600; }
 
@@ -144,7 +144,8 @@ table { border-spacing: 0; border-collapse: collapse; }
 
 td, th { padding: 0; }
 
-button { cursor: pointer; border-radius: 0; }
+button { background-color: #0366d6; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; }
+button:hover { background-color: #0056b3; transform: scale(1.05); }
 
 details summary { cursor: pointer; }
 details:not([open]) > *:not(summary) { display: none !important; }
@@ -2590,7 +2591,7 @@ pre { margin-top: 0; margin-bottom: 0; font-family: "SFMono-Regular", Consolas, 
 
 .markdown-body ul, .markdown-body ol { padding-left: 2em; }
 .markdown-body ul.no-list, .markdown-body ol.no-list { padding: 0; list-style-type: none; }
-.markdown-body ul ul, .markdown-body ul ol, .markdown-body ol ol, .markdown-body ol ul { margin-top: 0; margin-bottom: 0; }
+.markdown-body ul ul, .markdown-body ul ol, .markdown-body ol ul, .markdown-body ol ol { margin-top: 0; margin-bottom: 0; }
 .markdown-body li { word-wrap: break-all; }
 .markdown-body li > p { margin-top: 16px; }
 .markdown-body li + li { margin-top: 0.25em; }

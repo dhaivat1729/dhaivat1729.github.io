@@ -72,6 +72,13 @@
     body.dark-mode .news-date {
       color: #ffcc00; /* Yellow color for dates in dark mode */
     }
+    .keywords {
+      color: #000000; /* Black text for light mode */
+      transition: color 0.3s;
+    }
+    body.dark-mode .keywords {
+      color: #ffffff; /* White text for dark mode */
+    }
   </style>
 </head>
 
@@ -222,6 +229,15 @@
             </div>
           </div>
         </div>
+
+        <!-- Modal HTML
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span id="closeModalBtn" style="cursor:pointer;">&times;</span>
+            <p>Some additional information can go here.</p>
+          </div>
+        </div>
+        <button id="openModalBtn">Open Modal</button> -->
 
       </div>
     </div>
