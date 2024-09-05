@@ -5,8 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhaivat Bhatt - Publications</title>
     <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: center; /* Center the content */
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        body.dark-mode .top-bar {
+            background-color: #1e1e1e;
+        }
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 24px;
+            margin-left: 20px; /* Add some space between title and button */
+        }
+        .publication {
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for publications */
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode .publication {
+            background-color: #000000; /* Black background for dark mode */
+            color: #ffffff; /* White text for dark mode */
+        }
+        body.dark-mode .publication-links a {
+            color: #ffcc00; /* Yellow color for links in dark mode */
+        }
+    </style>
 </head>
 <body>
+    <div class="top-bar">
+        <h1>Dhaivat Bhatt - Publications</h1>
+        <span id="toggleDarkModeBtn" class="toggle-btn">🌙</span> <!-- Moon icon for dark mode -->
+    </div>
+    
     <div class="page-content">
         <div class="wrapper">
             <a href="../index.html" class="back-link">← Back to Main Page</a>
@@ -74,7 +118,7 @@
                         <button class="abstract-btn" onclick="toggleAbstract('abstract6')">Abstract</button>
                     </div>
                     <div id="abstract6" class="abstract" style="display:none;">
-                        <p>Deep neural networks are the de-facto standard for object detection in autonomous driving applications. However, neural networks cannot be blindly trusted even within the training data distribution, let alone outside it. This has paved way for several probabilistic object detection techniques that measure uncertainty in the outputs of an object detector. Through this position paper, we serve three main purposes. First, we briefly sketch the landscape of current methods for probabilistic object detecion. Second, we present the main shortcomings of these approaches. Finally, we present promising avenues for future research, and proof-of-concept results where applicable. Through this effort, we hope to bring the community one step closer to performing accurate, reliable, and consistent probabilistic object detection. A project page for this work can be found at montrealrobotics.ca/probod</p>
+                        <p>Deep neural networks are the de-facto standard for object detection in autonomous driving applications. However, neural networks cannot be blindly trusted even within the training data distribution, let alone outside it. This has paved way for several probabilistic object detection techniques that measure uncertainty in the outputs of an object detector. Through this position paper, we serve three main purposes. First, we briefly sketch the landscape of current methods for probabilistic object detection. Second, we present the main shortcomings of these approaches. Finally, we present promising avenues for future research, and proof-of-concept results where applicable. Through this effort, we hope to bring the community one step closer to performing accurate, reliable, and consistent probabilistic object detection. A project page for this work can be found at montrealrobotics.ca/probod</p>
                     </div>
                 </div>
 
@@ -118,7 +162,7 @@
                 </div>
 
                 <div class="publication">
-                    <h3>Have i reached the intersection: A deep learning-based approach for intersection detection from monocular cameras</h3>
+                    <h3>Have I reached the intersection: A deep learning-based approach for intersection detection from monocular cameras</h3>
                     <p><strong><u>Dhaivat Bhatt</u></strong>, Danish Sodhi, Arghya Pal, Vineeth Balasubramanian, Madhava Krishna</p>
                     <p>2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</p>
                     <div class="publication-links">
@@ -126,7 +170,7 @@
                         <button class="abstract-btn" onclick="toggleAbstract('abstract2')">Abstract</button>
                     </div>
                     <div id="abstract2" class="abstract" style="display:none;">
-                        <p>Long-short term memory networks(LSTM) models have shown considerable performance on variety of problems dealing with sequential data. In this paper, we propose a variant of Long-Term Recurrent Convolutional Network(LRCN) to detect road intersection. We call this network as IntersectNet. We pose road intersection detection as binary classification task over sequence of frames. The model combines deep hierarchical visual feature extractor with recurrent sequence model. The model is end to end trainable with capability of capturing the temporal dynamics of the system. We exploit this capability to identify road intersection in a sequence of temporally consistent images. The model has been rigorously trained and tested on various different datasets. We think that our findings could be useful to model behavior of autonomous agent in the real-world.</p>
+                        <p>Long-short term memory networks (LSTM) models have shown considerable performance on a variety of problems dealing with sequential data. In this paper, we propose a variant of Long-Term Recurrent Convolutional Network (LRCN) to detect road intersections. We call this network IntersectNet. We pose road intersection detection as a binary classification task over a sequence of frames. The model combines deep hierarchical visual feature extractor with recurrent sequence model. The model is end-to-end trainable with the capability of capturing the temporal dynamics of the system. We exploit this capability to identify road intersections in a sequence of temporally consistent images. The model has been rigorously trained and tested on various different datasets. We think that our findings could be useful to model the behavior of autonomous agents in the real world.</p>
                     </div>
                 </div>
 
@@ -139,7 +183,7 @@
                         <button class="abstract-btn" onclick="toggleAbstract('abstract1')">Abstract</button>
                     </div>
                     <div id="abstract1" class="abstract" style="display:none;">
-                        <p>Curb detection is a critical component of driver assistance and autonomous driving systems. In this paper, we present a discriminative approach to the problem of curb detection under diverse road conditions. We define curbs as the intersection of drivable and non-drivable area which are classified using dense Conditional random fields(CRF). In our method, we fuse output of a neural network used for pixel-wise semantic segmentation with depth and color information from stereo cameras. CRF fuses the output of a deep model and height information available in stereo data and provides improved segmentation. Further we introduce temporal smoothness using a weighted average of Segnet output and output from a probabilistic voxel grid as our unary potential. Finally, we show improvements over the current state of the art neural networks. Our proposed method shows accurate results over large range of variations in curb curvature and appearance, without the need of retraining the model for the specific dataset.</p>
+                        <p>Curb detection is a critical component of driver assistance and autonomous driving systems. In this paper, we present a discriminative approach to the problem of curb detection under diverse road conditions. We define curbs as the intersection of drivable and non-drivable areas which are classified using dense Conditional random fields (CRF). In our method, we fuse the output of a neural network used for pixel-wise semantic segmentation with depth and color information from stereo cameras. CRF fuses the output of a deep model and height information available in stereo data and provides improved segmentation. Further, we introduce temporal smoothness using a weighted average of SegNet output and output from a probabilistic voxel grid as our unary potential. Finally, we show improvements over the current state of the art neural networks. Our proposed method shows accurate results over a large range of variations in curb curvature and appearance, without the need of retraining the model for the specific dataset.</p>
                     </div>
                 </div>
             </div>
@@ -155,6 +199,25 @@
                 abstract.style.display = "none";
             }
         }
+
+        // Toggle dark/light mode
+        const toggleDarkMode = () => {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            // Change the icon based on the current mode
+            const toggleBtn = document.getElementById("toggleDarkModeBtn");
+            if (body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️'; // Sun icon for light mode
+            } else {
+                toggleBtn.textContent = '🌙'; // Moon icon for dark mode
+            }
+        };
+
+        // Add event listener for the toggle button
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("toggleDarkModeBtn").addEventListener("click", toggleDarkMode);
+        });
     </script>
 </body>
 </html>
