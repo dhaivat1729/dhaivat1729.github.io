@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhaivat Bhatt - Publications</title>
+    <meta name="description" content="Selected publications by Dhaivat Bhatt in multimodal learning, procedural parsing, uncertainty estimation, and robotics.">
+    <link rel="icon" href="/assets/img/profile_pic.jpg" type="image/jpeg">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
         body {
@@ -15,7 +17,7 @@
         }
         .top-bar {
             display: flex;
-            justify-content: center; /* Center the content */
+            justify-content: center;
             align-items: center;
             padding: 10px;
             background-color: #f0f0f0;
@@ -25,199 +27,457 @@
             background-color: #1e1e1e;
         }
         .toggle-btn {
+            border: 0;
+            background: transparent;
             cursor: pointer;
             font-size: 24px;
-            margin-left: 20px; /* Add some space between title and button */
+            margin-left: 20px;
         }
-        .publication {
-            background-color: rgba(255, 255, 255, 0.9); /* Light background for publications */
-            border-radius: 5px;
+        .toggle-btn:focus-visible {
+            outline: 2px solid #007bff;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        .publication-page {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 24px 20px 56px;
+        }
+        .pub-hero {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        body.dark-mode .pub-hero,
+        body.dark-mode .publication-card {
+            background: #000000;
+            border-color: #333333;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pub-hero h1 {
+            margin: 0 0 8px;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        .pub-hero p {
+            max-width: 760px;
+            margin: 0;
+            color: #555555;
+        }
+        body.dark-mode .pub-hero p,
+        body.dark-mode .pub-section-intro,
+        body.dark-mode .publication-authors,
+        body.dark-mode .publication-summary,
+        body.dark-mode .abstract-body {
+            color: #d8d8d8;
+        }
+        .pub-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .pub-stat {
+            border: 1px solid #d7e3ed;
+            border-radius: 8px;
             padding: 10px;
+            background: #f8fbfd;
+        }
+        body.dark-mode .pub-stat {
+            background: #111111;
+            border-color: #333333;
+        }
+        .pub-stat strong {
+            display: block;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        .pub-stat span {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+        body.dark-mode .pub-stat span {
+            color: #d8d8d8;
+        }
+        .theme-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 18px;
+        }
+        .theme-chips a,
+        .tag {
+            border: 1px solid #d7e3ed;
+            border-radius: 999px;
+            padding: 4px 9px;
+            background: #ffffff;
+            color: #375c74;
+            font-size: 0.88rem;
+            text-decoration: none;
+        }
+        body.dark-mode .theme-chips a,
+        body.dark-mode .tag {
+            border-color: #333333;
+            background: #000000;
+            color: #cfe8ff;
+        }
+        .pub-section {
+            margin-top: 30px;
+        }
+        .pub-section h2 {
+            margin: 0 0 4px;
+            font-size: 1.45rem;
+        }
+        .pub-section-intro {
+            margin: 0 0 14px;
+            color: #555555;
+        }
+        .publication-list {
+            display: grid;
+            gap: 14px;
+        }
+        .publication-card {
+            display: grid;
+            grid-template-columns: 112px 1fr;
+            gap: 18px;
+            align-items: start;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            padding: 18px;
+        }
+        .venue-badge {
+            border-left: 4px solid #4682b4;
+            padding-left: 10px;
+            color: #555555;
+            font-weight: bold;
+            line-height: 1.25;
+        }
+        body.dark-mode .venue-badge {
+            color: #d8d8d8;
+        }
+        .venue-badge span {
+            display: block;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+        .publication-card h3 {
+            margin: 0 0 6px;
+            font-size: 1.25rem;
+            line-height: 1.25;
+        }
+        .publication-authors,
+        .publication-summary {
+            margin: 0 0 8px;
+            color: #555555;
+        }
+        .publication-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
             margin: 10px 0;
-            transition: background-color 0.3s, color 0.3s;
         }
-        body.dark-mode .publication {
-            background-color: #000000; /* Black background for dark mode */
-            color: #ffffff; /* White text for dark mode */
+        .publication-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
         }
-        body.dark-mode .publication-links a {
-            color: #ffcc00; /* Yellow color for links in dark mode */
+        .publication-actions a,
+        details summary {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #007bff;
+            background: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        body.dark-mode .publication-actions a,
+        body.dark-mode details summary {
+            background: #000000;
+            color: #ffcc00;
+            border-color: #ffcc00;
+        }
+        .publication-actions a:hover,
+        details summary:hover {
+            background: #007bff;
+            color: #ffffff;
+        }
+        body.dark-mode .publication-actions a:hover,
+        body.dark-mode details summary:hover {
+            background: #ffcc00;
+            color: #000000;
+        }
+        details {
+            display: inline-block;
+        }
+        .abstract-body {
+            margin-top: 10px;
+            color: #555555;
+            font-size: 0.96rem;
+        }
+        @media (max-width: 700px) {
+            .publication-page {
+                padding: 18px 12px 44px;
+            }
+            .pub-hero {
+                padding: 18px;
+            }
+            .pub-hero h1 {
+                font-size: 1.65rem;
+            }
+            .pub-stats {
+                grid-template-columns: 1fr;
+            }
+            .publication-card {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .venue-badge {
+                display: flex;
+                gap: 8px;
+                align-items: baseline;
+            }
         }
     </style>
 </head>
 <body>
     <div class="top-bar">
-        <h1>Dhaivat Bhatt - Publications</h1>
-        <span id="toggleDarkModeBtn" class="toggle-btn">🌙</span> <!-- Moon icon for dark mode -->
+        <h1>Dhaivat Bhatt</h1>
+        <button id="toggleDarkModeBtn" class="toggle-btn" type="button" aria-label="Toggle dark mode">🌙</button>
     </div>
-    
-    <div class="page-content">
-        <div class="wrapper">
-            <a href="../index.html" class="back-link">← Back to Main Page</a>
+
+    <main class="publication-page">
+        <section class="pub-hero">
+            <a href="../index.html" class="back-link">Back to main page</a>
             <h1>Publications</h1>
-            
-            <div class="publications">
-                <div class="publication">
-                    <h3>End-to-end Parsing of Procedural Text into Flow Graphs</h3>
-                    <p><strong><u>Dhaivat J. Bhatt</u></strong>, Seyed Ahmad Abdollahpouri Hosseini, Federico Fancellu, Afsaneh Fazly</p>
-                    <p>LREC-COLING 2024</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/2024.lrec-main.517.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract10')">Abstract</button>
-                    </div>
-                    <div id="abstract10" class="abstract" style="display:none;">
-                        <p>We focus on the problem of parsing procedural text into fine-grained flow graphs that encode actions and entities, as well as their interactions. Specifically, we focus on parsing cooking recipes, and address a few limitations of existing parsers. Unlike SOTA approaches to flow graph parsing that work in two separate stages identifying actions and entities (tagging) and encoding their interactions via connecting edges (graph generation). we propose an end-to-end multi-task framework that simultaneously performs tagging and graph generation. In addition, due to the end-to-end nature of our proposed model, we can unify the input representation, and moreover can use compact encoders, resulting in small models with significantly fewer parameters than SOTA models. Another key challenge in training flow graph parsers is the lack of sufficient annotated data, due to the costly nature of the fine-grained annotations. We address this problem by taking advantage of the abundant unlabelled recipes, and show that pre-training on automatically-generated noisy silver annotations (from unlabelled recipes) results in a large improvement in flow graph parsing.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Visual Semantic Parsing: From Images to Abstract Meaning Representation</h3>
-                    <p>Mohamed Ashraf Abdelsalam, Zhan Shi, Federico Fancellu, Kalliopi Basioti, <strong><u>Dhaivat J Bhatt</u></strong>, Vladimir Pavlovic, Afsaneh Fazly</p>
-                    <p>Proceedings of the 26th Conference on Computational Natural Language Learning (CoNLL)</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/2022.conll-1.19.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract7')">Abstract</button>
-                    </div>
-                    <div id="abstract7" class="abstract" style="display:none;">
-                        <p>The success of scene graphs for visual scene understanding has brought attention to the benefits of abstracting a visual input (e.g., image) into a structured representation, where entities (people and objects) are nodes connected by edges specifying their relations. Building these representations, however, requires expensive manual annotation in the form of images paired with their scene graphs or frames. These formalisms remain limited in the nature of entities and relations they can capture. In this paper, we propose to leverage a widely-used meaning representation in the field of natural language processing, the Abstract Meaning Representation (AMR), to address these shortcomings. Compared to scene graphs, which largely emphasize spatial relationships, our visual AMR graphs are more linguistically informed, with a focus on higher-level semantic concepts extrapolated from visual input. Moreover, they allow us to generate meta-AMR graphs to unify information contained in multiple image descriptions under one representation. Through extensive experimentation and analysis, we demonstrate that we can re-purpose an existing text-to-AMR parser to parse images into AMRs. Our findings point to important future research directions for improved scene understanding.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Flow graph to video grounding for weakly-supervised multi-step localization</h3>
-                    <p>Nikita Dvornik, Isma Hadji, Hai Pham, <strong><u>Dhaivat Bhatt</u></strong>, Brais Martinez, Afsaneh Fazly, Allan D Jepson</p>
-                    <p>ECCV 2022</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/ECCV2022.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract9')">Abstract</button>
-                    </div>
-                    <div id="abstract9" class="abstract" style="display:none;">
-                        <p>In this work, we consider the problem of weakly-supervised multi-step localization in instructional videos. An established approach to this problem is to rely on a given list of steps. However, in reality, there is often more than one way to execute a procedure successfully, by following the set of steps in slightly varying orders. Thus, for successful localization in a given video, recent works require the actual order of procedure steps in the video, to be provided by human annotators at both training and test times. Instead, here, we only rely on generic procedural text that is not tied to a specific video. We represent the various ways to complete the procedure by transforming the list of instructions into a procedure flow graph which captures the partial order of steps. Using the flow graphs reduces both training and test time annotation requirements. To this end, we introduce the new problem of flow graph to video grounding. In this setup, we seek the optimal step ordering consistent with the procedure flow graph and a given video. To solve this problem, we propose a new algorithm - Graph2Vid - that infers the actual ordering of steps in the video and simultaneously localizes them. To show the advantage of our proposed formulation, we extend the CrossTask dataset with procedure flow graph information. Our experiments show that Graph2Vid is both more efficient than the baselines and yields strong step localization results, without the need for step order annotation.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>f-Cal: Aleatoric uncertainty quantification for robot perception via calibrated neural regression</h3>
-                    <p><strong><u>Dhaivat Bhatt</u></strong>, Kaustubh Mani, Dishank Bansal, Krishna Murthy, Hanju Lee, Liam Paull</p>
-                    <p>ICRA 2022</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/f-cal.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract8')">Abstract</button>
-                    </div>
-                    <div id="abstract8" class="abstract" style="display:none;">
-                        <p>While modern deep neural networks are performant perception modules, performance (accuracy) alone is insufficient, particularly for safety-critical robotic applications such as self-driving vehicles. Robot autonomy stacks also require these otherwise blackbox models to produce reliable and calibrated measures of confidence on their predictions. Existing approaches estimate uncertainty from these neural network perception stacks by modifying network architectures, inference procedure, or loss functions. However, in general, these methods lack calibration, meaning that the predictive uncertainties do not faithfully represent the true underlying uncertainties (process noise). Our key insight is that calibration is only achieved by imposing constraints across multiple examples, such as those in a mini-batch; as opposed to existing approaches which only impose constraints per-sample, often leading to overconfident (thus miscalibrated) uncertainty estimates. By enforcing the distribution of outputs of a neural network to resemble a target distribution by minimizing an f-divergence, we obtain significantly better-calibrated models compared to prior approaches. Our approach, f-Cal, outperforms existing uncertainty calibration approaches on robot perception tasks such as object detection and monocular depth estimation over multiple real-world benchmarks.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Probabilistic object detection: Strengths, weaknesses, opportunities</h3>
-                    <p><strong><u>Dhaivat Bhatt</u></strong>, Dishank Bansal, Gunshi Gupta, Hanju Lee, Krishna Murthy Jatavallabhula, Liam Paull</p>
-                    <p>Workshop on AI for Autonomous Driving at the International Conference on Machine Learning (ICML) - 2020</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/ICML2020.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract6')">Abstract</button>
-                    </div>
-                    <div id="abstract6" class="abstract" style="display:none;">
-                        <p>Deep neural networks are the de-facto standard for object detection in autonomous driving applications. However, neural networks cannot be blindly trusted even within the training data distribution, let alone outside it. This has paved way for several probabilistic object detection techniques that measure uncertainty in the outputs of an object detector. Through this position paper, we serve three main purposes. First, we briefly sketch the landscape of current methods for probabilistic object detection. Second, we present the main shortcomings of these approaches. Finally, we present promising avenues for future research, and proof-of-concept results where applicable. Through this effort, we hope to bring the community one step closer to performing accurate, reliable, and consistent probabilistic object detection. A project page for this work can be found at montrealrobotics.ca/probod</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Maplite: Autonomous intersection navigation without a detailed prior map</h3>
-                    <p>Teddy Ort, Krishna Murthy, Rohan Banerjee, Sai Krishna Gottipati, <strong><u>Dhaivat Bhatt</u></strong>, Igor Gilitschenski, Liam Paull, Daniela Rus</p>
-                    <p>IEEE Robotics and Automation Letters</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/MapLite_Autonomous_Intersection_Navigation_Without_a_Detailed_Prior_Map.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract5')">Abstract</button>
-                    </div>
-                    <div id="abstract5" class="abstract" style="display:none;">
-                        <p>In this work, we present MapLite: a one-click autonomous navigation system capable of piloting a vehicle to an arbitrary desired destination point given only a sparse publicly available topometric map (from OpenStreetMap). The onboard sensors are used to segment the road region and register the topometric map in order to fuse the high-level navigation goals with a variational path planner in the vehicle frame. This enables the system to plan trajectories that correctly navigate road intersections without the use of an external localization system such as GPS or a detailed prior map. Since the topometric maps already exist for the vast majority of roads, this solution greatly increases the geographical scope for autonomous mobility solutions. We implement MapLite on a full-scale autonomous vehicle and exhaustively test it on over 15 km of road including over 100 autonomous intersection traversals. We further extend these results through simulated testing to validate the system on complex road junction topologies such as traffic circles.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Probabilistic obstacle avoidance and object following: An overlap of gaussians approach</h3>
-                    <p><strong><u>Dhaivat Bhatt</u></strong>, Akash Garg, Bharath Gopalakrishnan, K Madhava</p>
-                    <p>2019 28th IEEE International Conference on Robot and Human Interactive Communication (RO-MAN)</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/RO-MAN_final.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract4')">Abstract</button>
-                    </div>
-                    <div id="abstract4" class="abstract" style="display:none;">
-                        <p>Autonomous navigation and obstacle avoidance are core capabilities that enable robots to execute tasks in the real world. We propose a new approach to collision avoidance that accounts for uncertainty in the states of the agent and the obstacles. We first demonstrate that measures of entropy—used in current approaches for uncertainty-aware obstacle avoidance—are an inappropriate design choice. We then propose an algorithm that solves an optimal control sequence with a guaranteed risk bound, using a measure of overlap between the two distributions that represent the state of the robot and the obstacle, respectively. Furthermore, we provide closed form expressions that can characterize the overlap as a function of the control input. The proposed approach enables model-predictive control framework to generate bounded-confidence control commands. An extensive set of simulations have been conducted in various constrained environments in order to demonstrate the efficacy of the proposed approach over the prior art. We demonstrate the usefulness of the proposed scheme under tight spaces where computing risk-sensitive control maneuvers is vital. We also show how this framework generalizes to other problems, such as object-following.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Deep active localization</h3>
-                    <p>Sai Krishna, Keehong Seo, <strong><u>Dhaivat Bhatt</u></strong>, Vincent Mai, Krishna Murthy, Liam Paull</p>
-                    <p>IEEE Robotics and Automation Letters</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/DAL.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract3')">Abstract</button>
-                    </div>
-                    <div id="abstract3" class="abstract" style="display:none;">
-                        <p>Active localization is the problem of generating robot actions that allow it to maximally disambiguate its pose within a reference map. Traditional approaches to this use an information-theoretic criterion for action selection and hand-crafted perceptual models. In this work we propose an end-to-end differentiable method for learning to take informative actions that is trainable entirely in simulation and then transferable to real robot hardware with zero refinement. The system is composed of two modules: a convolutional neural network for perception, and a deep reinforcement learned planning module. We introduce a multi-scale approach to the learned perceptual model since the accuracy needed to perform action selection with reinforcement learning is much less than the accuracy needed for robot control. We demonstrate that the resulting system outperforms using the traditional approach for either perception or planning. We also demonstrate our approaches robustness to different map configurations and other nuisance parameters through the use of domain randomization in training. The code is also compatible with the OpenAI gym framework, as well as the Gazebo simulator.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Have I reached the intersection: A deep learning-based approach for intersection detection from monocular cameras</h3>
-                    <p><strong><u>Dhaivat Bhatt</u></strong>, Danish Sodhi, Arghya Pal, Vineeth Balasubramanian, Madhava Krishna</p>
-                    <p>2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/Intersection_detection.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract2')">Abstract</button>
-                    </div>
-                    <div id="abstract2" class="abstract" style="display:none;">
-                        <p>Long-short term memory networks (LSTM) models have shown considerable performance on a variety of problems dealing with sequential data. In this paper, we propose a variant of Long-Term Recurrent Convolutional Network (LRCN) to detect road intersections. We call this network IntersectNet. We pose road intersection detection as a binary classification task over a sequence of frames. The model combines deep hierarchical visual feature extractor with recurrent sequence model. The model is end-to-end trainable with the capability of capturing the temporal dynamics of the system. We exploit this capability to identify road intersections in a sequence of temporally consistent images. The model has been rigorously trained and tested on various different datasets. We think that our findings could be useful to model the behavior of autonomous agents in the real world.</p>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>CRF based method for curb detection using semantic cues and stereo depth</h3>
-                    <p>Danish Sodhi, Sarthak Upadhyay, <strong><u>Dhaivat Bhatt</u></strong>, K Madhava Krishna, Shanti Swarup</p>
-                    <p>Proceedings of the Tenth Indian Conference on Computer Vision, Graphics and Image Processing</p>
-                    <div class="publication-links">
-                        <a href="../assets/pdf/Danish_etal_ICVGIP16.pdf">PDF</a>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract1')">Abstract</button>
-                    </div>
-                    <div id="abstract1" class="abstract" style="display:none;">
-                        <p>Curb detection is a critical component of driver assistance and autonomous driving systems. In this paper, we present a discriminative approach to the problem of curb detection under diverse road conditions. We define curbs as the intersection of drivable and non-drivable areas which are classified using dense Conditional random fields (CRF). In our method, we fuse the output of a neural network used for pixel-wise semantic segmentation with depth and color information from stereo cameras. CRF fuses the output of a deep model and height information available in stereo data and provides improved segmentation. Further, we introduce temporal smoothness using a weighted average of SegNet output and output from a probabilistic voxel grid as our unary potential. Finally, we show improvements over the current state of the art neural networks. Our proposed method shows accurate results over a large range of variations in curb curvature and appearance, without the need of retraining the model for the specific dataset.</p>
-                    </div>
-                </div>
+            <p>
+                A curated record across structured procedural understanding, multimodal grounding,
+                calibrated uncertainty, and robotics. The common thread is reliability: representing
+                structure, measuring uncertainty, and making AI systems easier to evaluate.
+            </p>
+            <div class="pub-stats" aria-label="Publication summary">
+                <div class="pub-stat"><strong>10</strong><span>selected papers</span></div>
+                <div class="pub-stat"><strong>8</strong><span>venues and workshops</span></div>
+                <div class="pub-stat"><strong>4</strong><span>first/co-first author works</span></div>
             </div>
-        </div>
-    </div>
-    
-    <script>
-        function toggleAbstract(id) {
-            var abstract = document.getElementById(id);
-            if (abstract.style.display === "none") {
-                abstract.style.display = "block";
-            } else {
-                abstract.style.display = "none";
-            }
-        }
+            <div class="theme-chips" aria-label="Publication themes">
+                <a href="#nlp-multimodal">NLP / multimodal</a>
+                <a href="#robotics-uncertainty">Robotics / uncertainty</a>
+                <a href="#early-vision">Early vision</a>
+            </div>
+        </section>
 
-        // Toggle dark/light mode
-        const toggleDarkMode = () => {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
+        <section id="nlp-multimodal" class="pub-section">
+            <h2>NLP and Multimodal Learning</h2>
+            <p class="pub-section-intro">Procedural structure, semantic parsing, and grounding language into visual or video representations.</p>
 
-            // Change the icon based on the current mode
-            const toggleBtn = document.getElementById("toggleDarkModeBtn");
-            if (body.classList.contains('dark-mode')) {
-                toggleBtn.textContent = '☀️'; // Sun icon for light mode
-            } else {
-                toggleBtn.textContent = '🌙'; // Moon icon for dark mode
-            }
-        };
+            <div class="publication-list">
+                <article class="publication-card">
+                    <div class="venue-badge">LREC-COLING <span>2024</span></div>
+                    <div>
+                        <h3>End-to-end Parsing of Procedural Text into Flow Graphs</h3>
+                        <p class="publication-authors"><strong><u>Dhaivat J. Bhatt</u></strong>, Seyed Ahmad Abdollahpouri Hosseini, Federico Fancellu, Afsaneh Fazly</p>
+                        <p class="publication-summary">An end-to-end multitask framework for parsing procedural recipes into actions, entities, and graph edges.</p>
+                        <div class="publication-tags"><span class="tag">procedural parsing</span><span class="tag">flow graphs</span><span class="tag">NLP</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/2024.lrec-main.517.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We focus on parsing procedural text into fine-grained flow graphs that encode actions and entities, as well as their interactions. Unlike prior two-stage approaches, we propose an end-to-end multi-task framework that simultaneously performs tagging and graph generation, and use noisy silver annotations from unlabeled recipes to improve learning with limited annotated data.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
 
-        // Add event listener for the toggle button
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById("toggleDarkModeBtn").addEventListener("click", toggleDarkMode);
-        });
-    </script>
+                <article class="publication-card">
+                    <div class="venue-badge">ECCV <span>2022 oral</span></div>
+                    <div>
+                        <h3>Flow Graph to Video Grounding for Weakly-Supervised Multi-step Localization</h3>
+                        <p class="publication-authors">Nikita Dvornik, Isma Hadji, Hai Pham, <strong><u>Dhaivat Bhatt</u></strong>, Brais Martinez, Afsaneh Fazly, Allan D. Jepson</p>
+                        <p class="publication-summary">Grounding procedural flow graphs in instructional video without requiring exact step-order annotations at test time.</p>
+                        <div class="publication-tags"><span class="tag">video grounding</span><span class="tag">weak supervision</span><span class="tag">flow graphs</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/ECCV2022.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We introduce flow graph to video grounding for weakly supervised multi-step localization. Instead of relying on human-provided step order for every video, we use procedural flow graphs to represent valid step orderings and infer the ordering and localization jointly.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">CoNLL <span>2022</span></div>
+                    <div>
+                        <h3>Visual Semantic Parsing: From Images to Abstract Meaning Representation</h3>
+                        <p class="publication-authors">Mohamed Ashraf Abdelsalam, Zhan Shi, Federico Fancellu, Kalliopi Basioti, <strong><u>Dhaivat J. Bhatt</u></strong>, Vladimir Pavlovic, Afsaneh Fazly</p>
+                        <p class="publication-summary">Repurposing AMR-style meaning representations for structured visual scene understanding.</p>
+                        <div class="publication-tags"><span class="tag">visual AMR</span><span class="tag">semantic parsing</span><span class="tag">multimodal</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/2022.conll-1.19.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We explore how Abstract Meaning Representation can address limitations of scene-graph-like visual abstractions. The work shows that existing text-to-AMR parsers can be repurposed toward image-based AMR representations and points toward richer visual scene understanding.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="robotics-uncertainty" class="pub-section">
+            <h2>Robotics, Uncertainty, and Autonomy</h2>
+            <p class="pub-section-intro">Robot perception and autonomy work focused on calibration, risk, localization, and navigation.</p>
+
+            <div class="publication-list">
+                <article class="publication-card">
+                    <div class="venue-badge">ICRA <span>2022</span></div>
+                    <div>
+                        <h3>f-Cal: Aleatoric Uncertainty Quantification for Robot Perception via Calibrated Neural Regression</h3>
+                        <p class="publication-authors"><strong><u>Dhaivat Bhatt</u></strong>, Kaustubh Mani, Dishank Bansal, Krishna Murthy, Hanju Lee, Liam Paull</p>
+                        <p class="publication-summary">A calibration method for uncertainty estimates in safety-critical robot perception tasks.</p>
+                        <div class="publication-tags"><span class="tag">uncertainty</span><span class="tag">calibration</span><span class="tag">robot perception</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/f-cal.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">f-Cal improves uncertainty calibration by enforcing constraints across batches rather than only per sample. The method produces better calibrated uncertainty estimates for robot perception tasks such as object detection and monocular depth estimation.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">ICML AIAD <span>2020</span></div>
+                    <div>
+                        <h3>Probabilistic Object Detection: Strengths, Weaknesses, Opportunities</h3>
+                        <p class="publication-authors"><strong><u>Dhaivat Bhatt</u></strong>, Dishank Bansal, Gunshi Gupta, Hanju Lee, Krishna Murthy Jatavallabhula, Liam Paull</p>
+                        <p class="publication-summary">A position paper on uncertainty-aware object detection for autonomous driving.</p>
+                        <div class="publication-tags"><span class="tag">object detection</span><span class="tag">uncertainty</span><span class="tag">autonomous driving</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/ICML2020.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We survey the landscape of probabilistic object detection, identify key shortcomings, and outline promising directions toward accurate, reliable, and consistent uncertainty estimates in autonomous driving perception systems.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">RAL + ICRA <span>2020</span></div>
+                    <div>
+                        <h3>MapLite: Autonomous Intersection Navigation Without a Detailed Prior Map</h3>
+                        <p class="publication-authors">Teddy Ort, Krishna Murthy, Rohan Banerjee, Sai Krishna Gottipati, <strong><u>Dhaivat Bhatt</u></strong>, Igor Gilitschenski, Liam Paull, Daniela Rus</p>
+                        <p class="publication-summary">Sparse-map autonomous navigation for complex intersections using onboard perception and local planning.</p>
+                        <div class="publication-tags"><span class="tag">navigation</span><span class="tag">autonomy</span><span class="tag">perception</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/MapLite_Autonomous_Intersection_Navigation_Without_a_Detailed_Prior_Map.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">MapLite pilots a vehicle to a destination using sparse public topometric maps, onboard road segmentation, and local planning. The system navigates intersections without GPS-like external localization or detailed prior maps.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">RO-MAN <span>2019</span></div>
+                    <div>
+                        <h3>Probabilistic Obstacle Avoidance and Object Following: An Overlap of Gaussians Approach</h3>
+                        <p class="publication-authors"><strong><u>Dhaivat Bhatt</u></strong>, Akash Garg, Bharath Gopalakrishnan, K. Madhava Krishna</p>
+                        <p class="publication-summary">Risk-aware obstacle avoidance using overlap between robot and obstacle state distributions.</p>
+                        <div class="publication-tags"><span class="tag">motion planning</span><span class="tag">risk</span><span class="tag">robotics</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/RO-MAN_final.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We propose an obstacle-avoidance and object-following method that accounts for uncertainty in robot and obstacle states by optimizing control with a bounded-risk measure based on overlap between Gaussian distributions.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">RAL <span>2019</span></div>
+                    <div>
+                        <h3>Deep Active Localization</h3>
+                        <p class="publication-authors">Sai Krishna, Keehong Seo, <strong><u>Dhaivat Bhatt</u></strong>, Vincent Mai, Krishna Murthy, Liam Paull</p>
+                        <p class="publication-summary">Learning perception and action selection for active localization, trained in simulation and transferred to hardware.</p>
+                        <div class="publication-tags"><span class="tag">active localization</span><span class="tag">sim-to-real</span><span class="tag">robotics</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/DAL.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We present an end-to-end differentiable active localization system that learns both perception and planning in simulation, then transfers to real robot hardware with no refinement.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="early-vision" class="pub-section">
+            <h2>Early Vision and Robotics</h2>
+            <p class="pub-section-intro">Earlier work on road understanding and visual perception for robotics.</p>
+
+            <div class="publication-list">
+                <article class="publication-card">
+                    <div class="venue-badge">IROS <span>2017</span></div>
+                    <div>
+                        <h3>Have I Reached the Intersection? A Deep Learning-Based Approach for Intersection Detection from Monocular Cameras</h3>
+                        <p class="publication-authors"><strong><u>Dhaivat Bhatt</u></strong>, Danish Sodhi, Arghya Pal, Vineeth Balasubramanian, Madhava Krishna</p>
+                        <p class="publication-summary">A recurrent visual model for detecting road intersections from monocular camera sequences.</p>
+                        <div class="publication-tags"><span class="tag">road understanding</span><span class="tag">monocular vision</span><span class="tag">LRCN</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/Intersection_detection.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We pose intersection detection as binary classification over a sequence of frames and use a recurrent convolutional model to capture temporal consistency in monocular road images.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card">
+                    <div class="venue-badge">ICVGIP <span>2016</span></div>
+                    <div>
+                        <h3>CRF Based Method for Curb Detection Using Semantic Cues and Stereo Depth</h3>
+                        <p class="publication-authors">Danish Sodhi, Sarthak Upadhyay, <strong><u>Dhaivat Bhatt</u></strong>, K. Madhava Krishna, Shanti Swarup</p>
+                        <p class="publication-summary">Curb detection by combining semantic segmentation, stereo depth, and dense CRFs.</p>
+                        <div class="publication-tags"><span class="tag">curb detection</span><span class="tag">semantic cues</span><span class="tag">stereo depth</span></div>
+                        <div class="publication-actions">
+                            <a href="../assets/pdf/Danish_etal_ICVGIP16.pdf">PDF</a>
+                            <details>
+                                <summary>Abstract</summary>
+                                <p class="abstract-body">We combine pixel-wise semantic segmentation with depth and color information from stereo cameras, using dense CRFs to improve curb detection under varied road conditions.</p>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>
