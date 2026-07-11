@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Dhaivat Bhatt</title>
-  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.">
+  <meta name="description" content="Dhaivat Bhatt is an AI researcher and research engineer working on agentic AI, evaluation harnesses, post-training, multimodal learning, and reliable ML systems.">
 
-  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+  <link rel="icon" href="/assets/img/profile_pic.jpg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="canonical" href="/">
   
@@ -54,9 +54,16 @@
       background-color: #1e1e1e;
     }
     .toggle-btn {
+      border: 0;
+      background: transparent;
       cursor: pointer;
       font-size: 24px;
       margin-left: 20px;
+    }
+    .toggle-btn:focus-visible {
+      outline: 2px solid #007bff;
+      outline-offset: 3px;
+      border-radius: 4px;
     }
     .news-item {
       background-color: rgba(255, 255, 255, 0.9);
@@ -120,13 +127,75 @@
     body.dark-mode .fun-fact a:hover {
       color: #80bdff;
     }
+    .research-snapshot {
+      max-width: 900px;
+      margin: 24px auto 0;
+    }
+    .focus-panel {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      padding: 16px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+    body.dark-mode .focus-panel {
+      background: #000000;
+      border-color: #333333;
+    }
+    .focus-panel h2 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+    }
+    .focus-panel > p {
+      margin: 0 0 14px;
+      color: #555;
+    }
+    body.dark-mode .focus-panel > p,
+    body.dark-mode .focus-card p {
+      color: #d8d8d8;
+    }
+    .focus-card {
+      border-left: 3px solid #4682b4;
+      padding: 8px 0 8px 12px;
+      margin: 8px 0;
+    }
+    .focus-card h3 {
+      margin: 0 0 3px;
+      font-size: 1rem;
+    }
+    .focus-card p {
+      margin: 0;
+      color: #555;
+      font-size: 0.96rem;
+    }
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 10px 0 18px;
+    }
+    .mini-tags span {
+      border: 1px solid #d7e3ed;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: #ffffff;
+      color: #375c74;
+      font-size: 0.88rem;
+    }
+    body.dark-mode .mini-tags span {
+      border-color: #333333;
+      background: #000000;
+      color: #cfe8ff;
+    }
   </style>
 </head>
 
 <body>
   <div class="top-bar">
     <h1>Dhaivat Bhatt</h1>
-    <span id="toggleDarkModeBtn" class="toggle-btn">🌙</span>
+    <button id="toggleDarkModeBtn" class="toggle-btn" type="button" aria-label="Toggle dark mode">🌙</button>
   </div>
 
   <div class="page-content">
@@ -134,7 +203,14 @@
       <div class="post">
         <header class="post-header">
           <div class="keywords">
-            Generative AI | Deep Learning | Multimodal Learning | Solutions Architect | LLM Engineering | AI Agents
+            Agentic AI | Evaluation Harnesses | Post-training | Multimodal Learning | Reliable ML
+          </div>
+          <div class="mini-tags" aria-label="Research themes">
+            <span>agents</span>
+            <span>tools</span>
+            <span>flow graphs</span>
+            <span>uncertainty</span>
+            <span>robotics</span>
           </div>
         </header>
 
@@ -145,25 +221,43 @@
             </div>
             <div class="profile-info">
               <div class="social">
-                <a href="https://scholar.google.com/citations?user=SWRDCwQAAAAJ" target="_blank">Google Scholar</a> |
-                <a href="https://www.linkedin.com/in/dhaivat1729" target="_blank">LinkedIn</a> |
-                <a href="assets/pdf/DhaivatCV.pdf" target="_blank">CV</a> |
-                <a href="https://twitter.com/dhaivat1729" target="_blank">Twitter</a> |
+                <a href="https://scholar.google.com/citations?user=SWRDCwQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> |
+                <a href="https://www.linkedin.com/in/dhaivat1729" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+                <a href="assets/pdf/DhaivatCV.pdf" target="_blank" rel="noopener noreferrer">CV</a> |
+                <a href="https://twitter.com/dhaivat1729" target="_blank" rel="noopener noreferrer">Twitter</a> |
                 <a href="mailto:dhaivat1994@gmail.com">Email</a> |
-                <a href="assets/pdf/IIITH_thesis.pdf" target="_blank">IIIT-H masters Thesis</a> |
-                <a href="assets/pdf/UdeM_thesis.pdf" target="_blank">MILA masters Thesis</a> |
+                <a href="assets/pdf/IIITH_thesis.pdf" target="_blank" rel="noopener noreferrer">IIIT-H masters Thesis</a> |
+                <a href="assets/pdf/UdeM_thesis.pdf" target="_blank" rel="noopener noreferrer">MILA masters Thesis</a> |
                 <a href="publications/index.html">Publications</a>
               </div>
               <div class="profile-description">
-                <p>I work as a Machine learning research engineer at Samsung AI centre - Toronto. My recent experience involved extensively working with LLMs and AI agents. I worked on parameter efficient fine-tuning Llama3 using LoRA, as well as experience with prompt engineering for dataset creation. I have also worked on scripting torch models for inference on device, as well as worked with Quantization of LLMs for efficient inference. I am currently interested in exploring new opportunities in the domain of Generative AI, specifically AI agents. Feel free to reach out to me either on email or twitter for any collaboration or new opportunities.</p>
+                <p>I am an AI researcher and research engineer working on reliable AI systems. My work spans calibrated uncertainty for robot perception, structured procedural understanding, multimodal grounding, and, currently, agentic AI harnesses, evaluation, and post-training at a stealth startup. I am based in the United States and am a US permanent resident.</p>
 
-                <p>Before that I was a research masters student at <a href="https://mila.quebec/en/" target="_blank">MILA</a>, University of Montreal, under supervision of <a href="https://liampaull.ca" target="_blank">Professor Liam Paull</a>, where I mainly worked on Probabilistic object detection. I worked on trustworthy uncertainty estimation for my thesis, which got accepted to ICRA 2022. I also worked on identifying flaws of existing set of probabilistic object detectors, which got published as a position paper at ICML 2020. Before coming to MILA, I did MS in Robotics with Prof Madhav Krishna, and worked on many things including self driving cars and autonomous drones.</p>
+                <p>Previously, I worked at Samsung AI Centre Toronto on multimodal learning, image retrieval, graph parsing, LLM/agent prototypes, and on-device AI. Before Samsung, I was a research masters student at <a href="https://mila.quebec/en/" target="_blank" rel="noopener noreferrer">MILA</a>, University of Montreal, under supervision of <a href="https://liampaull.ca" target="_blank" rel="noopener noreferrer">Professor Liam Paull</a>, where I mainly worked on probabilistic object detection and trustworthy uncertainty estimation. Before coming to MILA, I did MS in Robotics with Prof. Madhav Krishna, and worked on self-driving cars, autonomous drones, and robot perception.</p>
 
-                <p>When I am not working, I am either brainstorming new ideas with ChatGPT or watching some political documentary. 😉 I have recently discovered my love for AI assisted coding, and stock markets. I do options trading on the side. During weekends, I am either coding using Cursor, or doing technical analysis on trading view, or bowling with some friends.</p>
+                <p>I like the parts of AI work where research taste meets engineering discipline: building harnesses, testing failure modes, turning fuzzy ideas into runnable loops, and making systems easier to measure.</p>
+              </div>
+              <div class="research-snapshot">
+                <div class="focus-panel">
+                  <h2>Current focus</h2>
+                  <p>A short snapshot of the ideas I keep circling back to.</p>
+                  <div class="focus-card">
+                    <h3>Agentic AI systems</h3>
+                    <p>Workflows that use tools, recover from errors, and expose measurable behavior.</p>
+                  </div>
+                  <div class="focus-card">
+                    <h3>Harnesses and evaluation</h3>
+                    <p>Controlled loops that make model progress visible instead of anecdotal.</p>
+                  </div>
+                  <div class="focus-card">
+                    <h3>Post-training</h3>
+                    <p>Using feedback, demonstrations, and synthetic data to shape more useful model behavior.</p>
+                  </div>
+                </div>
               </div>
               <div class="fun-fact">
-                <h3>🎨 Fun Fact</h3>
-                <p>The profile picture you see on this website is not a real photograph! I fine-tuned Flux1-dev on just 17 images of myself and generated this image. Curious about the process? <a href="https://www.linkedin.com/posts/dhaivat1729_last-few-days-i-was-working-on-finetuning-activity-7239748672584884225-67Uz/?utm_source=share&utm_medium=member_ios" target="_blank">Check out the details here</a>.</p>
+                <h3>Fun Fact</h3>
+                <p>The profile picture you see on this website is not a real photograph. I fine-tuned Flux1-dev on 17 images of myself and generated this image. Curious about the process? <a href="https://www.linkedin.com/posts/dhaivat1729_last-few-days-i-was-working-on-finetuning-activity-7239748672584884225-67Uz/?utm_source=share&utm_medium=member_ios" target="_blank" rel="noopener noreferrer">Check out the details here</a>.</p>
               </div>
             </div>
           </div>
@@ -172,6 +266,10 @@
         <div class="news">
           <h2>News</h2>
           <div class="news-container">
+            <div class="news-item">
+              <div class="news-date">2024 - Now</div>
+              <div class="news-content">Working at a stealth startup on agentic AI, harnesses/evaluation, and post-training.</div>
+            </div>
             <div class="news-item">
               <div class="news-date">May 2024</div>
               <div class="news-content">Traveled to Turin, Italy - to present my work on end-to-end flow graph parsing</div>
@@ -282,7 +380,7 @@
   <footer>
     <div class="wrapper">
       &copy; Copyright 2024 Dhaivat Bhatt.
-      Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+      Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
     </div>
   </footer>
 
